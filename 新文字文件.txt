@@ -1,5 +1,11 @@
 20220714 學習資料
 --------------------------------------------------------------------------------------------------------
+利用TryGetValue取得Request的Headers的值
+            bool Flog = HttpContext.Request.Headers.TryGetValue("Authorization", out StringValues outValue);
+            if(Flog){
+                var jwtToke = outValue
+            }
+--------------------------------------------------------------------------------------------------------
 JWT登入後取得登入使用者資訊
             //記在jwt payload中的聲明，可依專案需求自訂Claim
             var claims = new List<Claim>()
