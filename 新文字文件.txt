@@ -32,4 +32,19 @@ JSON的一些全局配置
         options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
          options.JsonSerializerOptions.Converters.AddDateFormatString("yyyy-MM-dd HH:mm:ss");
         //options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;   //忽略循环引用  .net6 中可用
-    });            
+     });            
+
+[Entity Framework] AsNoTracking方法適用時機
+在使用AsNoTracking方法時會回傳新的查詢，且此查詢資料不會被快取在DbContext實體中，因此資料不會被列入追蹤(Tracking)，無法透過DbContext的SaveChanges()方法對目標DB進行資料異動。以下將針對其特性簡單列出可使用時機及簡易測試。參考:https://dotblogs.com.tw/wasichris/2015/03/29/150868
+適用時機
+1想要直接取得DB實際資料(忽略快取資料)
+在預設的情況下所有查詢的資料都會被快取列入追蹤，因此可以享有Entity Framework提供的便捷性，重複查詢資料時可以從快取取出，如果有異動可透過DbContext的SaveChanges()方法直接對目標DB進行同步異動；但有時我們不會想從快取獲得資料，因為DB資料可能已被其他方式異動(直接操作DB)，而快取卻還保持舊資料，因此可以透過AsNoTracking進行新的查詢，獲得DB中目前實際的資料。
+2.需完整取出剛寫入DB之資料物件(忽略快取資料)
+假設有2個關連資料表，分別是使用者(User)及角色(Role)，而該關聯為1個User擁有1個角色。當我們新增一筆新使用者時，針對角色設定只需給予已存在角色代碼(RoleId)即可，不會特別去處理Role導航屬性(Navigation Property)，所以在快取中Role會是Null狀態，此時若需要進一步Role的資訊(如RoleName)時，是無法直接取得的；因此可透過AsNoTracking方法將完整資訊從DB取回，方便後續取得各導航屬性中的資訊。
+3.查詢結果僅供檢視(沒有異動需求)
+如果查詢的資料沒有異動需求，就可使用AsNoTracking方法將資料排除於追蹤清單中；另外由於查詢資料未列入追蹤，Entity Framework無須對此資料進行額外的處理，因此自然在查詢速度會有較佳的表現。
+
+     DbContext全局不跟踪（NoTracking）
+            services.AddDbContext<DBContext>(options =>
+            options.UseMySql(Configuration.GetConnectionString("MysqlConnection")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+     
