@@ -1,12 +1,22 @@
 20220714 學習資料
-
+--------------------------------------------------------------------------------------------------------
+JWT登入後取得登入使用者資訊
+            //記在jwt payload中的聲明，可依專案需求自訂Claim
+            var claims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.Name, userInfo.Email),
+                new Claim(ClaimTypes.Role,"admin")
+                new Claim("FullName","SeanZeus")
+            };
+            var _fullName = httpContextAccessor.HttpContext.User.FindFirstValue("FullName")
+--------------------------------------------------------------------------------------------------------
 ASP.NET Core 6.0 全新功能探索
-
+--------------------------------------------------------------------------------------------------------
 net6為spa增加新的功能 
 Microsoft.AspNetCore.SpaProxy 套件
             ASP.NET Core應用程式的啟動程式碼不再需要任何單頁應用程式特定邏輯。 在開發期間啟動前端開發伺服器的邏輯會由新的 
             Microsoft.AspNetCore.SpaProxy 套件在執行時間插入應用程式。 後援路由是使用端點路由來處理，而不是使用 SPA 特定的中介軟體。
-
+--------------------------------------------------------------------------------------------------------
 Endpoint中间件：定义Controler与URL的映射关系，为URL绑定处理程序，MVC、RazorPages、SignalR等都是基于Endpoint中间件进行工作的。默认情况下，当请求与所有的Endpoint都不匹配时，应用程序会返回HTTP 404响应码，同时，提供了一组MapFallback方法来处理未匹配成功的请求。示例代码如下：
              app.UseEndpoints(endpoints =>
             {
@@ -14,7 +24,7 @@ Endpoint中间件：定义Controler与URL的映射关系，为URL绑定处理程
                 endpoints.MapControllers();
                 endpoints.MapFallbackToFile("index.html");
             });
-            
+--------------------------------------------------------------------------------------------------------            
 net6啟用了新的語言特性
             <PropertyGroup>
                 <Nullable>enable</Nullable>
@@ -23,7 +33,7 @@ net6啟用了新的語言特性
             宣告屬性可空值  string? name;
             回傳屬性可空值  name!.Lenght
             避免null例外出現  student.name?.ToUpper();
-            
+--------------------------------------------------------------------------------------------------------            
 JSON的一些全局配置            
     services.AddControllersWithViews()
     .AddJsonOptions(options=>{ 
@@ -37,7 +47,7 @@ JSON的一些全局配置
          options.JsonSerializerOptions.Converters.AddDateFormatString("yyyy-MM-dd HH:mm:ss");
         //options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;   //忽略循环引用  .net6 中可用
      });            
-
+--------------------------------------------------------------------------------------------------------
 [Entity Framework] AsNoTracking方法適用時機
 在使用AsNoTracking方法時會回傳新的查詢，且此查詢資料不會被快取在DbContext實體中，因此資料不會被列入追蹤(Tracking)，無法透過DbContext的SaveChanges()方法對目標DB進行資料異動。以下將針對其特性簡單列出可使用時機及簡易測試。參考:https://dotblogs.com.tw/wasichris/2015/03/29/150868
 適用時機
@@ -47,8 +57,9 @@ JSON的一些全局配置
 假設有2個關連資料表，分別是使用者(User)及角色(Role)，而該關聯為1個User擁有1個角色。當我們新增一筆新使用者時，針對角色設定只需給予已存在角色代碼(RoleId)即可，不會特別去處理Role導航屬性(Navigation Property)，所以在快取中Role會是Null狀態，此時若需要進一步Role的資訊(如RoleName)時，是無法直接取得的；因此可透過AsNoTracking方法將完整資訊從DB取回，方便後續取得各導航屬性中的資訊。
 3.查詢結果僅供檢視(沒有異動需求)
 如果查詢的資料沒有異動需求，就可使用AsNoTracking方法將資料排除於追蹤清單中；另外由於查詢資料未列入追蹤，Entity Framework無須對此資料進行額外的處理，因此自然在查詢速度會有較佳的表現。
-
      DbContext全局不跟踪（NoTracking）
             services.AddDbContext<DBContext>(options =>
             options.UseMySql(Configuration.GetConnectionString("MysqlConnection")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+--------------------------------------------------------------------------------------------------------            
+           
      
