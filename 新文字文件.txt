@@ -1,5 +1,7 @@
 20220714 學習資料
 
+ASP.NET Core 6.0 全新功能探索
+
 net6為spa增加新的功能            
             ASP.NET Core應用程式的啟動程式碼不再需要任何單頁應用程式特定邏輯。 在開發期間啟動前端開發伺服器的邏輯會由新的 
             Microsoft.AspNetCore.SpaProxy 套件在執行時間插入應用程式。 後援路由是使用端點路由來處理，而不是使用 SPA 特定的中介軟體。
@@ -9,4 +11,25 @@ net6為spa增加新的功能
                 endpoints.MapFallbackToFile("index.html");
             });
             
+net6啟用了新的語言特性
+            <PropertyGroup>
+                <Nullable>enable</Nullable>
+            </PropertyGroup>    
+            參考型別可空值
+            宣告屬性可空值  string? name;
+            回傳屬性可空值  name!.Lenght
+            避免null例外出現  student.name?.ToUpper();
             
+JSON的一些全局配置            
+    services.AddControllersWithViews()
+    .AddJsonOptions(options=>{ 
+        options.JsonSerializerOptions.WriteIndented=false ;
+        //取消中文字被Unicode编码
+        options.JsonSerializerOptions.Encoder =JavaScriptEncoder.Create(UnicodeRanges.All);
+         //使用驼峰样式的key:JsonNamingPolicy.CamelCase,不使用则设置为null,
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+         //反序列化不区分大小写
+        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+         options.JsonSerializerOptions.Converters.AddDateFormatString("yyyy-MM-dd HH:mm:ss");
+        //options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;   //忽略循环引用  .net6 中可用
+    });            
