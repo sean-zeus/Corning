@@ -9,6 +9,7 @@ JWT登入後取得登入使用者資訊
                 new Claim("FullName","SeanZeus")
             };
             var _fullName = httpContextAccessor.HttpContext.User.FindFirstValue("FullName")
+            var _name = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Name) //內建預設的屬性會被轉為完整的名稱需使用ClaimTypes來捉
 --------------------------------------------------------------------------------------------------------
 ASP.NET Core 6.0 全新功能探索
 --------------------------------------------------------------------------------------------------------
