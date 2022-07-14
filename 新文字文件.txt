@@ -2,12 +2,16 @@
 
 ASP.NET Core 6.0 全新功能探索
 
-net6為spa增加新的功能            
+net6為spa增加新的功能 
+Microsoft.AspNetCore.SpaProxy 套件
             ASP.NET Core應用程式的啟動程式碼不再需要任何單頁應用程式特定邏輯。 在開發期間啟動前端開發伺服器的邏輯會由新的 
             Microsoft.AspNetCore.SpaProxy 套件在執行時間插入應用程式。 後援路由是使用端點路由來處理，而不是使用 SPA 特定的中介軟體。
-            
-            app.UseEndpoints(endpoints =>
+
+Endpoint中间件：定义Controler与URL的映射关系，为URL绑定处理程序，MVC、RazorPages、SignalR等都是基于Endpoint中间件进行工作的。默认情况下，当请求与所有的Endpoint都不匹配时，应用程序会返回HTTP 404响应码，同时，提供了一组MapFallback方法来处理未匹配成功的请求。示例代码如下：
+             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
+                endpoints.MapControllers();
                 endpoints.MapFallbackToFile("index.html");
             });
             
