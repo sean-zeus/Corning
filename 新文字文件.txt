@@ -1,0 +1,12 @@
+20220714 學習資料
+
+net6為spa增加新的功能            
+            ASP.NET Core應用程式的啟動程式碼不再需要任何單頁應用程式特定邏輯。 在開發期間啟動前端開發伺服器的邏輯會由新的 
+            Microsoft.AspNetCore.SpaProxy 套件在執行時間插入應用程式。 後援路由是使用端點路由來處理，而不是使用 SPA 特定的中介軟體。
+            
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapFallbackToFile("index.html");
+            });
+            
+            
