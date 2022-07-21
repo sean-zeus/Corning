@@ -68,5 +68,7 @@ JSON的一些全局配置
             services.AddDbContext<DBContext>(options =>
             options.UseMySql(Configuration.GetConnectionString("MysqlConnection")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 --------------------------------------------------------------------------------------------------------            
+SignalR 在net5 支援斷線自動重連
+const connection = new signalR.HubConnectionBuilder().withUrl("chatHub").withAutomaticReconnect().build();
            
      
