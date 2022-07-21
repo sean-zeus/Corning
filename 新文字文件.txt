@@ -67,8 +67,37 @@ JSON的一些全局配置
      DbContext全局不跟踪（NoTracking）
             services.AddDbContext<DBContext>(options =>
             options.UseMySql(Configuration.GetConnectionString("MysqlConnection")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
---------------------------------------------------------------------------------------------------------            
+--------------------------------------------------------------------------------------------------------        
+
 SignalR 在net5 支援斷線自動重連
 const connection = new signalR.HubConnectionBuilder().withUrl("chatHub").withAutomaticReconnect().build();
-           
-     
+
+--------------------------------------------------------------------------------------------------------       
+
+asp.net core3 建議的設定步驟
+app.UseStaticFiles();   //必需app.UseRouting()前呼叫
+app.UseRouting();
+app.UseCors();          //必需在所有需要使用Cors的中介層前被呼叫
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseEndPoints(endpoints => { 
+    endpoints.MapControllers();               
+});
+
+--------------------------------------------------------------------------------------------------------       
+
+健建檢查服務(Health Checks)
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddHealthChecks();
+}
+public void Configure(IApplicationBuilder app)
+{
+    app.UseRouting();
+    app.UseEndPoints(endpoints => { 
+       endpoints.MapHealthChecks("/health");               
+    });    
+}
+之後可以定期連線 /health 判斷網站是否有出現異常
+--------------------------------------------------------------------------------------------------------  
+
