@@ -1,0 +1,99 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset136 \'b7\'73\'b2\'d3\'a9\'fa\'c5\'e9;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 $\'b2\'c5\u21495?\'a5\'ce\'aa\'6b\par
+\'a6\'62\'a6\'72\'b2\'c5\'a6\'ea\'ab\'65\'a5\'5b$\'ac\'db\u24403?\'a4\'5f\u23545?string.format()\'aa\'ba\u31616?\'a4\'c6\par
+\'a6\'70\'a1\'47\par
+int m_a = 1;\par
+int m_b = 2;\par
+\'a8\'cf\'a5\'cestring.format()\'a1\'47\par
+Console.WriteLine(string.format("this is a:\{0\},this is b:\{1\}"),m_a,m_b));\par
+\par
+\'a8\'cf\'a5\'ce\'a4\'46$\'a1\'41\'b4\'4e\'a5\'69\'a5\'48\'a6\'62\'ad\'ec\u26469?\'a5\'65\'a6\'ec\'b2\'c5\'aa\'ba\'a6\'61\'a4\'e8\'aa\'bd\'b1\'b5\'a5\'ce\u21442?\u25968?\'a5\'4e\'b4\'c0\par
+Console.WriteLine($"this is a:\{m_a\} ,this is b:\{m_b\}");\par
+\par
+DateTime dt = new DateTime(2017,4,1,13,16,32,108);\par
+string.Format("\{0:y yy yyy yyyy\}",dt); //17 17 2017 2017\par
+string.Format("\{0:M MM MMM MMMM\}", dt);//4  04 \'a5\'7c\'a4\'eb \'a5\'7c\'a4\'eb\par
+string.Format("\{0:d dd ddd dddd\}", dt);//1  01 \'a9\'50\'a4\'bb \'ac\'50\'b4\'c1\'a4\'bb\par
+string.Format("\{0:t tt\}", dt);//\'a4\'55 \'a4\'55\'a4\'c8\par
+string.Format("\{0:H HH\}", dt);//13 13\par
+string.Format("\{0:h hh\}", dt);//1  01\par
+string.Format("\{0:m mm\}", dt);//16 16\par
+string.Format("\{0:s ss\}", dt);//32 32\par
+string.Format("\{0:F FF FFF FFFF FFFFF FFFFFF FFFFFFF\}", dt);//1 1  108 108  108   108    108\par
+string.Format("\{0:f ff fff ffff fffff ffffff fffffff\}", dt);//1 10 108 1080 10800 108000 1080000\par
+string.Format("\{0:z zz zzz\}", dt);//+8 +08 +08:00\par
+ \par
+string.Format("\{0:yyyy/MM/dd HH:mm:ss.fff\}",dt);\'a1\'40\'a1\'40//2017/04/01 13:16:32.108\par
+string.Format("\{0:yyyy/MM/dd dddd\}", dt);\'a1\'40\'a1\'40\'a1\'40\'a1\'40\'a1\'40\'a1\'40//2017/04/01 \'ac\'50\'b4\'c1\'a4\'bb\par
+string.Format("\{0:yyyy/MM/dd dddd tt hh:mm\}", dt); //2017/04/01 \'ac\'50\'b4\'c1\'a4\'bb \'a4\'55\'a4\'c8 01:16\par
+string.Format("\{0:yyyyMMdd\}", dt);\'a1\'40\'a1\'40\'a1\'40\'a1\'40\'a1\'40\'a1\'40\'a1\'40\'a1\'40\'a1\'40//20170401\par
+string.Format("\{0:yyyy-MM-dd HH:mm:ss.fff\}", dt);\'a1\'40//2017-04-01 13:16:32.108\par
+\par
+@\'b2\'c5\u21495?\'a5\'ce\'aa\'6b\par
+1.\'ad\'ad\'a9\'77\'a6\'72\'b2\'c5\'a6\'ea\par
+\'a5\'ce @ \'b2\'c5\u21495?\'a5\'5b\'a6\'62\'a6\'72\'b2\'c5\'a6\'ea\'ab\'65\'ad\'b1\'aa\'ed\'a5\'dc\'a8\'e4\'a4\'a4\'aa\'ba\u-28820?\u20041?\'a6\'72\'b2\'c5\ldblquote\'a4\'a3\rdblquote\'b3\'51\u22788?\'b2\'7a\'a1\'43 \par
+\'a6\'70\'aa\'47\'a7\'da\u20204?\u20889?\'a4\'40\u20010?\'a4\'e5\'a5\'f3\'aa\'ba\'b8\'f4\u24452?\'a1\'41\'a8\'d2\'a6\'70"D:/\'a4\'e5\'a5\'bb\'a4\'e5\'a5\'f3"\'b8\'f4\u24452?\'a4\'55\'aa\'batext.txt\'a4\'e5\'a5\'f3\'a1\'41\'a4\'a3\'a5\'5b@\'b2\'c5\u21495?\'aa\'ba\u-29731?\u20889?\'aa\'6b\'a6\'70\'a4\'55\'a1\'47\par
+\par
+stringfileName="D://\'a4\'e5\'a5\'bb\'a4\'e5\'a5\'f3//text.txt";\par
+\par
+\'a6\'70\'aa\'47\'a8\'cf\'a5\'ce@\'b2\'c5\u21495?\'b4\'4e\u20250?\'a4\'f1\u-28797?\u31616?\u21333?\'a1\'47\par
+stringfileName=@"D:/\'a4\'e5\'a5\'bb\'a4\'e5\'a5\'f3/text.txt";\par
+2.\u-29783?\'a6\'72\'b2\'c5\'a6\'ea\'b8\'f3\'a6\'e6\par
+\'a6\'b3\u26102?\'ad\'d4\'a4\'40\u20010?\'a6\'72\'b2\'c5\'a6\'ea\u20889?\'a6\'62\'a4\'40\'a6\'e6\'a4\'a4\u20250?\'ab\'dc\u-27265?(\'a4\'f1\'a6\'70SQL\u-29715?\'a5\'79)\'a1\'41\'a4\'a3\'a8\'cf\'a5\'ce@\'b2\'c5\u21495?\'a1\'41\'a4\'40\'cf\'fa\u20889?\'aa\'6b\'ac\'4f\u-28711?\u26679?\'aa\'ba\'a1\'47\par
+\par
+string strSQL="SELECT * FROM HumanResources.Employee AS e" \par
++"INNER JOINPerson.Contact AS c" \par
++"ON e.ContactID=c.ContactID" \par
++"ORDERBY c.LastName"; \par
+\par
+\'a5\'5b\'a4\'57@\'b2\'c5\u21495?\'a6\'5a\'b4\'4e\'a5\'69\'a5\'48\'aa\'bd\'b1\'b5\u25442?\'a6\'e6\'a4\'46\'a1\'47\par
+\par
+string strSQL=@"SELECT * FROM HumanResources.Employee AS e INNER JOIN Person.Contact AS c ON e.ContactID=c.ContactID ORDERBYc.LastName"; \par
+\u-27154?\u21495?\'a5\'ce\'aa\'6b\par
+1. \'a5\'69\'aa\'c5\u31867?\'ab\'ac\'ad\'d7\u-26256?\'b2\'c5(\'a1\'48)\'a1\'47\par
+\par
+\'a1\'40\'a1\'40\'a4\'de\'a5\'ce\u31867?\'ab\'ac\'a5\'69\'a5\'48\'a8\'cf\'a5\'ce\'aa\'c5\'a4\'de\'a5\'ce\'aa\'ed\'a5\'dc\'a4\'40\u20010?\'a4\'a3\'a6\'73\'a6\'62\'aa\'ba\'ad\'c8,\'a6\'d3\'ad\'c8\u31867?\'ab\'ac\'b3\'71\'b1\'60\'a4\'a3\'af\'e0\'aa\'ed\'a5\'dc\u20026?\'aa\'c5\'a1\'43\par
+\'a1\'40\'a1\'40\'a8\'d2\'a6\'70:\par
+    string str=null;\'ac\'4f\'a5\'bf\'da\'cc\'aa\'ba\'a1\'43\par
+    int i=null\'a1\'46\u32534?\u-29743?\'be\'b9\u23558?\u25253?\u-27367?\'a1\'43\par
+    \u20026?\'a4\'46\'a8\'cf\'ad\'c8\u31867?\'ab\'ac\'a4\'5d\'a5\'69\u20026?\'aa\'c5,\'a5\'69\'aa\'c5\u31867?\'ab\'ac\'a5\'58\u29616?\'a4\'46,\'a5\'69\'aa\'c5\u31867?\'ab\'ac\'a8\'cf\'a5\'ce\'a5\'69\'aa\'c5\u31867?\'ab\'ac\'ad\'d7\u-26256?\'b2\'c5\'a1\'48\u26469?\'aa\'ed\'a5\'dc,\'aa\'ed\u29616?\'a7\'ce\'a6\'a1\u20026?T?\'a1\'43\par
+\'a1\'40\'a1\'40\'a8\'d2\'a1\'47int?\'aa\'ed\'a5\'dc\'ac\'4f\'a5\'69\'aa\'c5\'aa\'ba\'be\'e3\'a7\'ce,DateTime?\'aa\'ed\'a5\'dc\u20026?\'a5\'69\'aa\'c5\'aa\'ba\u26102?\u-27148?\'a1\'43\par
+\'a1\'40\'a1\'40T?\'a8\'e4\u23454?\'ac\'4fSystem.Nullable<T>\'a1\'5d\'aa\'78\'ab\'ac\u32467?\'cc\'db\'a1\'5e\'aa\'ba\u32553?\u20889?\'a7\'ce\'a6\'a1,\'a4\'5d\'b4\'4e\'b7\'4e\'a8\'fd\u30528?\u24403?\'a7\'41\'a5\'ce\'a8\'ecT\'a1\'48\u26102?\u32534?\u-29743?\'be\'b9\'a6\'62\u32534?\u-29743?\u26102?\u20250?\'a7\'e2T\'a1\'48\u32534?\u-29743?\'a6\'a8System.Nullable<T>\'aa\'ba\'a7\'ce\'a6\'a1,\par
+\'a1\'40\'a1\'40\'a8\'d2\'a6\'70\'a1\'47int?,\u32534?\u-29743?\'a6\'5a\'ab\'4b\'ac\'4fSystem.Nullable<int>\'aa\'ba\'a7\'ce\'a6\'a1\'a1\'43\par
+\par
+2. \'a4\'54\'a4\'b8\'a1\'5d\u-28720?\'ba\'e2\'b2\'c5\'a1\'5e\'aa\'ed\u-28738?\'a6\'a1(\'a1\'48:)\'a1\'47\par
+\par
+\u-29715?\'aa\'6b\u20026?\'a1\'47\u26465?\'a5\'f3\'aa\'ed\u-28738?\'a6\'a1\'a1\'48\'aa\'ed\u-28738?\'a6\'a11\'a1\'47\'aa\'ed\u-28738?\'a6\'a12\'a1\'46\par
+\u-29723?\'be\'de\'a7\'40\'ad\'ba\'a5\'fd\'a8\'44\'a5\'58\u26465?\'a5\'f3\'aa\'ed\u-28738?\'a6\'a1\'aa\'ba\'ad\'c8(bool\u31867?\'ab\'ac),\u20026?true\u26102?\u-29693?\'a5\'ce\'aa\'ed\u-28738?\'a6\'a11,\u20026?flase\u26102?\u-29693?\'a5\'ce\'aa\'ed\u-28738?\'a6\'a12\'a1\'43\par
+\'a8\'e4\u-28613?\u-28783?\u20026?\'a1\'47"\'a6\'70\'aa\'47\u20026?\'af\'75\u25191?\'a6\'e6\'b2\'c4\'a4\'40\u20010?,\'a7\'5f\u21017?\u25191?\'a6\'e6\'b2\'c4\'a4\'47\u20010?\'a1\'43"\par
+\par
+ \'a8\'d2\'a1\'47\par
+ test ? expression1 : expression2\par
+ test \'a5\'f4\'a6\'f3 Boolean \'aa\'ed\u-28738?\'a6\'a1\'a1\'43\par
+ expression1 test \u20026? true \u26102?\'aa\'f0\'a6\'5e\'aa\'ba\'aa\'ed\u-28738?\'a6\'a1\'a1\'43\'a5\'69\'af\'e0\'ac\'4f\'b3\'72\u28857?\'aa\'ed\u-28738?\'a6\'a1\'a1\'43\par
+ expression2 test \u20026? false \u26102?\'aa\'f0\'a6\'5e\'aa\'ba\'aa\'ed\u-28738?\'a6\'a1\'a1\'43\'a5\'69\'af\'e0\'ac\'4f\'b3\'72\u28857?\'aa\'ed\u-28738?\'a6\'a1\'a1\'43\par
+\par
+ \'a8\'d2\'a6\'70\'a1\'47\par
+ string prm1="4"; string prm2="5";\par
+ string prm3 = prm1==prm2?"yes":"no" // \'a6\'b9\u26102?prm3\'ad\'c8\u20026?"no".\par
+\par
+3. \'aa\'c5\'a6\'58\'a6\'7d\u-28720?\'ba\'e2\'b2\'c5(\'a1\'48\'a1\'48)\'a1\'47\par
+\par
+\'aa\'c5\'a6\'58\'a6\'7d\u-28720?\'ba\'e2\'b2\'c5 (null coalescing operator) ??\par
+\'a1\'40\'a1\'40\'a5\'ce\'a4\'5f\'a9\'77\u20041?\'a5\'69\'aa\'c5\u31867?\'ab\'ac\'a9\'4d\'a4\'de\'a5\'ce\u31867?\'ab\'ac\'aa\'ba\'c0\'71\u-29788?\'ad\'c8\'a1\'43\'a6\'70\'aa\'47\'a6\'b9\u-28720?\'ba\'e2\'b2\'c5\'aa\'ba\'a5\'aa\'be\'de\'a7\'40\u25968?\'a4\'a3\u20026? null\'a1\'41\u21017?\'a6\'b9\u-28720?\'ba\'e2\'b2\'c5\u23558?\'aa\'f0\'a6\'5e\'a5\'aa\'be\'de\'a7\'40\u25968?\'a1\'46\'a7\'5f\u21017?\'aa\'f0\'a6\'5e\'a5\'6b\'be\'de\'a7\'40\u25968?\'a1\'43\par
+\'a1\'40\'a1\'40\'a8\'d2\'a1\'47a??b \'a6\'70\'aa\'47 a \u20026?\'ab\'44\'aa\'c5\'a1\'41\u21017? a ?? b \'aa\'ba\u32467?\'aa\'47\u20026? a\'a1\'46\'a7\'5f\u21017?\u32467?\'aa\'47\u20026? b \'a1\'43\par
+\par
+\'aa\'c5\'a6\'58\'a6\'7d\u-28720?\'ba\'e2\'b2\'c5\u20026?\'a5\'6b\u32467?\'a6\'58\u-28720?\'ba\'e2\'b2\'c5\'a1\'41\'a7\'59\'be\'de\'a7\'40\u26102?\u20174?\'a5\'6b\'a6\'56\'a5\'aa\u-28709?\'a6\'e6\u32452?\'a6\'58\'aa\'ba\'a1\'43\par
+\'a1\'40\'a1\'40\'a8\'d2\'a1\'47\ldblquote a??b??c\rdblquote\'aa\'ba\'a7\'ce\'a6\'a1\'ab\'f6\ldblquote a??(b??c)\rdblquote\u-29791?\'ba\'e2\'a1\'43\par
+\par
+4.\u23454?\'ca\'5e\u21464?\'b6\'71\'a6\'57\'a4\'a7\'a6\'5a\'a5\'5b\'a1\'48\par
+\par
+string s = "123456789";\par
+var r1 = s?.Last();\par
+s = null;\par
+var r2 = s?.Last();\par
+\par
+\u24403?\u21464?\'b6\'71\'a4\'a3\u20026?null\u26102?\'a1\'41\'a5\'bf\'b1\'60\u25191?\'a6\'e6\'a1\'46\u24403?\u21464?\'b6\'71\u20026?null\u26102?\'a1\'41\'aa\'f0\'a6\'5enull\'a1\'43\par
+}
+ 
